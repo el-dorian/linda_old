@@ -159,7 +159,7 @@ class Mailing
                 foreach ($bills as $bill) {
                     $bill = Bill::findOne($bill);
                     // проверю, что номер участка счёта совпадает с номером участка почтового адреса
-                    if ($bill !== null && $bill->cottageNumber === (string)$mailInfo->cottage_num) {
+                    if ($bill !== null && $bill->cottage === $mailInfo->cottage_num) {
                         $fileInfo = PDFHandler::saveBillPdf($bill->id, true);
                         $attachments[] = $fileInfo;
                     } else {
